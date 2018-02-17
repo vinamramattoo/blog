@@ -1,0 +1,11 @@
+-- created the project folder
+-- initiated it with npm install (that created a package.json file)
+-- initiated the git repo using git init and git add remote origin
+-- create server.js file to initiate nodejs server
+-- install express using npm install express --save
+
+-- add boiler plate code in server.js
+          var express = require('express');
+          var app = express();
+          app.listen(3000);
+          

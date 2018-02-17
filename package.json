@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/vinamramattoo/blog/issues"
   },
-  "homepage": "https://github.com/vinamramattoo/blog#readme"
+  "homepage": "https://github.com/vinamramattoo/blog#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
