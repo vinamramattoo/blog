@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+  <head ng-app="blogApp">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body >
+
+
+
+<div class="container" ng-controller= "blogController">
+    <h1 style="text-align: center">welcome to my blog</h1>
+    <form>
+        <input class="form-control" type="text" placeholder="enter title">
+        <textarea class="form-control" placeholder="enter text"></textarea>
+        <input ng-click="createPost()" class="btn btn-block btn-success" type="submit" value="save">
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>
+
+
+   <script src="app.js"></script>
+
+
+
+  </body>
+</html>

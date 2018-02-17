@@ -8,4 +8,9 @@
           var express = require('express');
           var app = express();
           app.listen(3000);
-          
+
+-- added line  app.use(express.static(__dirname + "/public")); in server.js
+-- created folder public and added index.html added hello world
+-- ran the server using node server.js
+-- available at localhost:3000/index.html\
+-- created html form for blog with bootstrap and angulas js
