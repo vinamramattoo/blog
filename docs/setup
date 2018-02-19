@@ -14,3 +14,21 @@
 -- ran the server using node server.js
 -- available at localhost:3000/index.html\
 -- created html form for blog with bootstrap and angulas js
+--db addition adding following to server.js
+ const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/local');
+--installing the dependency using
+    npm install mongoose --save
+
+    -- //db scheme
+    var PostScheme = mongoose.Schema({
+        title: {type: String, required:true},
+        body: String,
+        tag: {type: String, enum: ['POLITICS','ECONOMY','TECHNOLOGY','EDUCATION']},
+        posted : {type: Date, default: Date.now}
+    }, {collection: 'post'});
+
+    //OBJECT THAT ALLOWS TO INTERACT WITH DB
+    var PostModel = mongoose.model("PostModel", PostScheme);
+-- usage
+PostModel.create(post);
