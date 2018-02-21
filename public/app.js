@@ -5,6 +5,7 @@
 
     function blogController($scope, $http){
       $scope.createPost = createPost;
+      $scope.deletePost = deletePost;
 
         function init(){
             getAllPosts();
@@ -26,8 +27,27 @@
 
         function createPost(post) {
             console.log(post);
-            $http.post("/api/blogPost", post);
+            $http.post("/api/blogPost", post)  .then(
+                function(posts){
+              getAllPosts();
+              },
+                function(err){
+                  $scope.msg = "creation failed"
+                })
         }
+
+        function deletePost(id){
+          $http.delete("/api/blogPost/"+id)
+          .then(
+            function(posts){
+          getAllPosts();
+          },
+            function(err){
+              $scope.msg = "deletion failed"
+            })
+
+        }
+
 
     }
 })();

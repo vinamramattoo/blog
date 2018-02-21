@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post("/api/blogPost", createPost);
 app.get("/api/blogPost", getAllPosts);
+app.delete("/api/blogPost/:id", deletePosts);
 
 // models
 function getAllPosts(req,res){
@@ -42,10 +43,19 @@ function getAllPosts(req,res){
 
 function createPost(req, res){
   var post = req.body;
-  console.log(post);
   PostModel.create(post)
   .then(
     function(obj){res.json(200);}
+    ,function(error){res.sendStatus(400);}
+  )
+}
+
+
+function deletePosts(req, res){
+  var postId = req.params.id;
+  PostModel.remove({_id: postId})
+  .then(
+    function(obj){res.sendStatus(200);}
     ,function(error){res.sendStatus(400);}
   )
 }
