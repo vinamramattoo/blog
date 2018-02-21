@@ -6,6 +6,8 @@
     function blogController($scope, $http){
       $scope.createPost = createPost;
       $scope.deletePost = deletePost;
+      $scope.editPost = editPost;
+      // $scope.updatePost = updatePost;
 
         function init(){
             getAllPosts();
@@ -21,7 +23,7 @@
               $scope.posts = posts.data;
             },
               function(err){
-                $scope.posts = "no result"
+                $scope.msg = "failure"
               }
           )}
 
@@ -45,9 +47,18 @@
             function(err){
               $scope.msg = "deletion failed"
             })
-
         }
 
+        function editPost(id){
+          $http.get("/api/blogPost/"+id)
+          .then(
+            function(post){
+              $scope.post = post.data;
+          },
+            function(err){
+              $scope.msg = "couldnt retrieve data"
+            })
+        }
 
     }
 })();

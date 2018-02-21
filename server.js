@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.post("/api/blogPost", createPost);
 app.get("/api/blogPost", getAllPosts);
 app.delete("/api/blogPost/:id", deletePosts);
+app.get("/api/blogPost/:id", getPost);
 
 // models
 function getAllPosts(req,res){
@@ -32,7 +33,6 @@ function getAllPosts(req,res){
     .find()
     .then(
       function(obj){
-        console.log(obj);
         res.json(obj);
       },
       function(error){
@@ -56,6 +56,15 @@ function deletePosts(req, res){
   PostModel.remove({_id: postId})
   .then(
     function(obj){res.sendStatus(200);}
+    ,function(error){res.sendStatus(400);}
+  )
+}
+
+function getPost(req, res){
+  var postId = req.params.id;
+  PostModel.findById(postId)
+  .then(
+    function(obj){res.json(obj);}
     ,function(error){res.sendStatus(400);}
   )
 }
