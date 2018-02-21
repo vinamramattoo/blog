@@ -22,12 +22,32 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post("/api/blogPost", createPost);
+app.get("/api/blogPost", getAllPosts);
+
+// models
+function getAllPosts(req,res){
+  console.log("reached getAllPosts");
+  PostModel
+    .find()
+    .then(
+      function(obj){
+        console.log(obj);
+        res.json(obj);
+      },
+      function(error){
+        res.sendStatus(400);
+      }
+    )
+}
 
 function createPost(req, res){
   var post = req.body;
   console.log(post);
-  PostModel.create(post);
-  res.json(post);
+  PostModel.create(post)
+  .then(
+    function(obj){res.json(200);}
+    ,function(error){res.sendStatus(400);}
+  )
 }
 
 app.listen(3000);

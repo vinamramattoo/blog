@@ -6,10 +6,28 @@
     function blogController($scope, $http){
       $scope.createPost = createPost;
 
+        function init(){
+            getAllPosts();
+        }
+
+        init();
+
+        function getAllPosts(){
+          $http
+            .get("/api/blogPost")
+            .then(
+              function(posts){
+              $scope.posts = posts.data;
+            },
+              function(err){
+                $scope.posts = "no result"
+              }
+          )}
+
         function createPost(post) {
             console.log(post);
             $http.post("/api/blogPost", post);
         }
+
     }
 })();
-  
