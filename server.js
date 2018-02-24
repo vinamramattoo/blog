@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/local');
+mongoose.connect('mongodb://localhost/blog');
 
 //db scheme
 var PostScheme = mongoose.Schema({
