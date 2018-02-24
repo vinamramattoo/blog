@@ -25,6 +25,7 @@ app.post("/api/blogPost", createPost);
 app.get("/api/blogPost", getAllPosts);
 app.delete("/api/blogPost/:id", deletePosts);
 app.get("/api/blogPost/:id", getPost);
+app.put("/api/blogPost/:id", updatePost);
 
 // models
 function getAllPosts(req,res){
@@ -67,6 +68,18 @@ function getPost(req, res){
     function(obj){res.json(obj);}
     ,function(error){res.sendStatus(400);}
   )
+}
+function updatePost(req, res){
+  var postId = req.params.id;
+  var post = req.body;
+  PostModel
+          .update({_id: postId},
+          {title: post.title,
+           body: post.body
+          }).then(
+              function(obj){res.sendStatus(200);}
+              ,function(error){res.sendStatus(400);}
+            )
 }
 
 app.listen(3000);

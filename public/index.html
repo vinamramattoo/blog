@@ -8,7 +8,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="app.js"></script>
 
   </head>
@@ -18,14 +18,14 @@
 
 <div class="container" ng-controller= "blogController">
     <h1 style="text-align: center">Mean Blog -_-</h1>
-    <h5>{{msg}}</h5>
+    <h5 style="color:red">{{msg}}</h5>
       <label for="title">Title</label>
         <input ng-model="post.title"  id="title" class="form-control" type="text" placeholder="enter title">
         <label for="body">Body</label>
-        <textarea ng-model="post.body" id="body" class="form-control" placeholder="enter text"></textarea>
+        <textarea style="height:400px" ng-model="post.body" id="body" class="form-control" placeholder="enter text"></textarea>
 
         <input ng-click="createPost(post)" class="btn btn-block btn-success" type="submit" value="save">
-        <input ng-click="update(post)" class="btn btn-block btn-info" type="submit" value="update">
+        <input ng-click="updatePost(post)" class="btn btn-block btn-info" type="submit" value="update">
         <div ng-repeat="post in posts" >
             <h2>{{post.title}}
                 <a ng-click="deletePost(post._id)" ><span  class="pull-right glyphicon glyphicon-remove"></span></a>
